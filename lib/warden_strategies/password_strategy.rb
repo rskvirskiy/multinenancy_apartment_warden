@@ -2,17 +2,15 @@ class PasswordStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
 
-    user_data = params['user'] || {}
-    user_data['email'].present? && user_data['password'].present?
+    tenant_data = params['tenant'] || {}
+    tenant_data['email'].present? && tenant_data['password'].present?
   end
 
   def authenticate!
-    user = User.find_by_email(params["user"].fetch("email"))
-    if user.nil? || user.confirmed_at.nil? || user.password != params["user"].fetch("password")
-      fail! :message => "strategies.password.failed"
-    else
-      success! user
-    end
+    tenant = Tenant.find_by(email: params['tenant']['email'])
+    return success!(tenant) if tenant && tenant.authenticate(params['tenant']['password'])
+
+    fail! message: 'strategies.password.failed'
   end
 end
 

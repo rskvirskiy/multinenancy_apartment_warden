@@ -1,7 +1,7 @@
-Warden::Manager.serialize_into_session do |user|
-  user.id
+Warden::Manager.serialize_into_session do |tenant|
+  tenant.id
 end
 
 Warden::Manager.serialize_from_session do |id|
-  User.find_by(id: id)
+  Tenant.find_by(id: id)
 end
