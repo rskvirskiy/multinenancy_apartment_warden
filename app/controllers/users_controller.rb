@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :current_user_tenant?
+  before_action :set_schema
 
   def index
     @users = User.all
@@ -39,5 +40,11 @@ class UsersController < ApplicationController
 
   def current_user_tenant?
     render status: 403, text: 'Not authorized' unless current_user_type_is_tenant?
+  end
+
+  def set_schema
+    return unless current_user_type_is_tenant?
+
+    Apartment::Tenant.switch!(current_user.name)
   end
 end

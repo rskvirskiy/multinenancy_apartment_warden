@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
 
   def destroy
     warden.logout
+    Apartment::Tenant.switch!('public')
 
     redirect_to :root
   end
