@@ -24,7 +24,7 @@ module TestProj
     config.active_record.raise_in_transactional_callbacks = true
 
     config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
-      manager.default_strategies :password
+      manager.default_strategies :tenant_password, :user_password
       manager.failure_app = UnauthorizedController
     end
   end

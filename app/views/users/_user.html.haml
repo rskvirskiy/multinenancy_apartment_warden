@@ -1,0 +1,5 @@
+%tr
+  %td= user.email
+  %td
+    = link_to t('.delete'), user_path(user), data: { confirm: 'Are you sure' },
+                method: :delete, class: 'btn btn-sm btn-danger'

@@ -1,4 +1,7 @@
 %h1 Welcome
 
 - if signed_in?
-  %h2 Tenant sign in success
+  %h2= "#{current_user.class.name} sign in success"
+
+  - if current_user_type_is_tenant?
+    = link_to 'All Users', users_path
