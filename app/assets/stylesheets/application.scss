@@ -10,6 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
  */
+
+@import "bootstrap";
+
+
+body {
+  padding-top: 70px;
+}
+
+.navbar .divider-vertical {
+  height: 38px;
+  margin: 5px;
+  border-left: 1px solid #999;
+}

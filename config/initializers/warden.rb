@@ -1,3 +1,5 @@
+require Rails.root.join('lib', 'warden_strategies', 'password_strategy')
+
 Warden::Manager.serialize_into_session do |tenant|
   tenant.id
 end

@@ -4,8 +4,7 @@
       %ul.nav.navbar-nav.navbar-right
         %li.divider-vertical
 
-        - if user_signed_in?
-          %li= link_to t('.sign_out'), destroy_user_session_path, method: :delete
+        - if signed_in?
+          %li= link_to t('.sign_out'), sessions_path, method: :delete
         - else
-          %li= link_to t('.sign_in'), new_user_session_path
-          %li= link_to t('.sign_up'), new_user_registration_path
+          %li= link_to t('.sign_in'), new_sessions_path

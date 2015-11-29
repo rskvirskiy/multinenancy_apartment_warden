@@ -1,5 +1,6 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'factory_girl'
 
 Capybara.javascript_driver = :poltergeist
 
@@ -76,4 +77,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.include FactoryGirl::Syntax::Methods
 end

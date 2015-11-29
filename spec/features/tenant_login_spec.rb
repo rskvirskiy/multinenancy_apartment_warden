@@ -4,14 +4,14 @@ describe 'the signin process', type: :feature do
   let(:correct_password) { 'welcome123' }
   let(:email) { 'test_tenant@example.com' }
 
-  let!(:tenant) do
-    Tenant.new(email: email, password: correct_password, password_confirmation: correct_password, name: 'test_tenant')
+  before(:each) do
+    create(:tenant, email: email, password: correct_password, password_confirmation: correct_password)
   end
 
   context 'correct credentials' do
     describe 'Sign in should be succeed' do
-      it 'sign in' do
-        visit '/sessions/new'
+      it do
+        visit new_sessions_path
 
         within('#session') do
           fill_in 'Email', with: email
@@ -19,7 +19,7 @@ describe 'the signin process', type: :feature do
         end
 
         click_button 'Sign in'
-        expect(page).to have_content 'Success'
+        expect(page).to have_content 'Tenant sign in success'
       end
     end
   end
@@ -27,7 +27,7 @@ describe 'the signin process', type: :feature do
   context 'incorrect credentials' do
     describe 'Sign in should be failed' do
       it 'sign in' do
-        visit '/sessions/new'
+        visit new_sessions_path
 
         within('#session') do
           fill_in 'Email', with: email
@@ -35,7 +35,7 @@ describe 'the signin process', type: :feature do
         end
 
         click_button 'Sign in'
-        expect(page).to have_content 'Success'
+        expect(page).to_not have_content 'Success'
       end
     end
   end
