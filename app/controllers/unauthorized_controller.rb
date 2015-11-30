@@ -14,9 +14,10 @@ class UnauthorizedController < ActionController::Metal
   def respond
     unless request.get?
       message = env['warden.options'].fetch(:message, "unauthorized.user")
-      flash.alert = I18n.t(message)
+
+      flash[:danger] = I18n.t(message)
     end
 
-    redirect_to new_sessions_url
+    redirect_to new_sessions_path
   end
 end

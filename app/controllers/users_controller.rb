@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
       redirect_to root_path
     else
-      flash[:alert] = @user.errors.full_messages.join(',')
+      flash[:danger] = @user.errors.full_messages.join(',')
 
       render :new
     end
