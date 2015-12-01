@@ -2,10 +2,6 @@ class PasswordStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
 
-    p 'a'*100
-    p strategy_params_key
-    p params
-
     tenant_data = params[strategy_params_key] || {}
     tenant_data['email'].present? && tenant_data['password'].present?
   end

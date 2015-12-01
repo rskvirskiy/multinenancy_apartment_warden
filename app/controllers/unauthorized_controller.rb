@@ -18,6 +18,6 @@ class UnauthorizedController < ActionController::Metal
       flash[:danger] = I18n.t(message)
     end
 
-    redirect_to new_sessions_path
+    redirect_to root_path
   end
 end

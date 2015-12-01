@@ -11,7 +11,7 @@ describe 'the signin process', type: :feature do
   context 'correct credentials' do
     describe 'Sign in should be succeed' do
       it do
-        visit new_sessions_path
+        visit new_tenants_sessions_path
 
         within('#session') do
           fill_in 'Email', with: email
@@ -27,7 +27,7 @@ describe 'the signin process', type: :feature do
   context 'incorrect credentials' do
     describe 'Sign in should be failed' do
       it 'sign in' do
-        visit new_sessions_path
+        visit new_tenants_sessions_path
 
         within('#session') do
           fill_in 'Email', with: email

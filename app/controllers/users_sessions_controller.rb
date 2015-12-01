@@ -1,0 +1,3 @@
+class UsersSessionsController < SessionsController
+
+end

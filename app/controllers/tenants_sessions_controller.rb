@@ -1,0 +1,3 @@
+class TenantsSessionsController < SessionsController
+
+end
