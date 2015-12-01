@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resource :tenants_sessions, only: %i(new create destroy)
 
   resources :users, only: %i(new create destroy index)
+  resources :tenants, only: %i(new create)
 end

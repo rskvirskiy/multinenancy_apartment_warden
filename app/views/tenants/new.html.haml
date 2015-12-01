@@ -1,0 +1,20 @@
+= form_for @tenant do |f|
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: 'form-control'
+
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control'
+
+  .form-group
+    = f.label :name, 'Subdomain name'
+    = f.text_field :name, class: 'form-control', data: {subdomain_validation: true}
+
+    .subdomain-errors.field_with_errors
+
+  = f.submit 'Create', class: 'btn btn-primary'

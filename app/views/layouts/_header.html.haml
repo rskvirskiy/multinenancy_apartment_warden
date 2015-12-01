@@ -10,3 +10,4 @@
           %li= link_to t('.sign_out'), sessions_path, method: :delete
         - else
           %li= link_to 'Tenant sign in', new_tenants_sessions_path
+          %li= link_to 'Tenant register', new_tenant_path

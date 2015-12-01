@@ -9,5 +9,6 @@ class CreateTenants < ActiveRecord::Migration
     end
 
     add_index :tenants, :email, unique: true
+    add_index :tenants, :name, unique: true
   end
 end
