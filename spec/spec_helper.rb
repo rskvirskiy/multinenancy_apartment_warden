@@ -1,6 +1,7 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'factory_girl'
+require 'capybara-screenshot/rspec'
 
 Capybara.javascript_driver = :poltergeist
 

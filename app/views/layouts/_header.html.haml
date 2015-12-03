@@ -2,12 +2,12 @@
   .container
     .collapse.navbar-collapse{role: :navigation}
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to 'User sign in', new_users_sessions_path
+        %li= link_to 'User login', new_users_sessions_path
 
         %li.divider-vertical
 
         - if signed_in?
-          %li= link_to t('.sign_out'), sessions_path, method: :delete
+          %li= link_to 'Sign out', sessions_path, method: :delete
         - else
-          %li= link_to 'Tenant sign in', new_tenants_sessions_path
+          %li= link_to 'Tenant login', new_tenants_sessions_path
           %li= link_to 'Tenant register', new_tenant_path

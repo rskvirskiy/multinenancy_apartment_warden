@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'factory_girl_rails'
+  gem 'capybara-screenshot'
 end
 
 group :development do

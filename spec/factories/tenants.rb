@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :tenant do
-    email 'test@ex.com'
+    sequence(:email) {|n| "tenant#{n}@mail.com" }
     password 'password'
     password_confirmation 'password'
-    name 'test_tenant'
+    name 'test-tenant'
   end
 end
