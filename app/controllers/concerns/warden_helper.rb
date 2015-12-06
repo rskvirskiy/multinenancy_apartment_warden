@@ -30,4 +30,8 @@ module WardenHelper
   def authenticate!
     warden.authenticate!
   end
+
+  def set_user(user)
+    warden.set_user(user)
+  end
 end

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151129145356) do
   end
 
   add_index "tenants", ["email"], name: "index_tenants_on_email", unique: true, using: :btree
+  add_index "tenants", ["name"], name: "index_tenants_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
