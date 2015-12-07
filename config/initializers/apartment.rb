@@ -5,6 +5,7 @@
 # require 'apartment/elevators/generic'
 # require 'apartment/elevators/domain'
 require 'apartment/elevators/subdomain'
+require 'rescued_apartment_middleware'
 
 #
 # Apartment Configuration
@@ -64,6 +65,6 @@ end
 # }
 
 # Rails.application.config.middleware.use 'Apartment::Elevators::Domain'
-Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
+Rails.application.config.middleware.use TenantMiddleware
 
 Apartment::Elevators::Subdomain.excluded_subdomains = ['www']
