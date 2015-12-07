@@ -23,15 +23,6 @@ describe 'the register and login process', type: :feature do
         click_button 'Create'
         expect(page).to have_content "Tenant #{email} was created"
 
-        click_link 'Tenant login'
-
-        within('#session') do
-          fill_in 'Email', with: email
-          fill_in 'Password', with: password
-        end
-
-        click_button 'Sign in'
-
         expect(page).to have_content "Tenant login for #{email} success"
       end
     end

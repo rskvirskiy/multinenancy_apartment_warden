@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate!
+  before_action :logout, except: :new
 
   def new
 
@@ -12,9 +13,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    warden.logout
     Apartment::Tenant.switch!('public')
 
     redirect_to :root
+  end
+
+  private
+
+  def logout
+    warden.logout
   end
 end
