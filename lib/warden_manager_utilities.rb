@@ -6,7 +6,7 @@ class WardenManagerUtilities
   end
 
   def tenant
-    Tenant.find_by(id: session_hash['id'], name: subdomain)
+    Tenant.find_by(id: session_hash['id'])
   end
 
   def user

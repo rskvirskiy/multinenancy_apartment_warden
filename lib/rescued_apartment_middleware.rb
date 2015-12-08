@@ -2,11 +2,10 @@ class TenantMiddleware < Apartment::Elevators::Subdomain
   def call(env)
     begin
       super
-    rescue Apartment::TenantNotFound => e
-      debugger
+    rescue Apartment::TenantNotFound
       domain_subdomain = domain_subdomain(env['HTTP_HOST'])
 
-      set_error_message_in_flash(env, domain_subdomain[:subdomain])
+      set_error_message_in_flash(env)
 
       location = root_url(domain_subdomain[:domain])
       return [301, {'Location' => location}, ['redirect']]
@@ -15,9 +14,9 @@ class TenantMiddleware < Apartment::Elevators::Subdomain
 
   private
 
-  def set_error_message_in_flash(env, subdomain)
+  def set_error_message_in_flash(env)
     request = ActionDispatch::Request.new(env)
-    request.flash['danger'] = "Subdomain '#{subdomain}' does not exist."
+    request.flash['danger'] = 'You are not authorized to access that subdomain.'
   end
 
   def root_url(host)
